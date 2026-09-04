@@ -5,205 +5,217 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Poetry United</title>
   <meta name="description" content="Poetry United. The Poetry Foundation has failed poetry. In the spirit of Ezra Pound and Harriet Monroe, it is time to begin again.">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#fbfaf7">
   <meta property="og:title" content="Poetry United">
   <meta property="og:description" content="It is time to begin again.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://poetry-united.com/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23000'/%3E%3Ccircle cx='24' cy='32' r='14' fill='%239b5de5'/%3E%3Ccircle cx='40' cy='32' r='14' fill='%232dd4bf' fill-opacity='.85'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c1b22'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='40' fill='%23fbfaf7'%3EP%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --black: #000000;
-      --ink: #0b0b0e;
-      --paper: #ece9f1;
-      --muted: #9b97a6;
-      --purple: #9b5de5;
-      --purple-deep: #6d3bbf;
-      --teal: #2dd4bf;
-      --teal-deep: #14a394;
-      --rule: #232230;
-      --measure: 38rem;
-      --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      --bg: #fbfaf7;
+      --surface: #ffffff;
+      --ink: #1c1b22;
+      --body: #3a3944;
+      --muted: #74727f;
+      --line: #e7e5df;
+      --accent: #3f4fd9;
+      --accent-ink: #2f3cb3;
+      --accent-soft: #eef0fc;
+      --measure: 44rem;
+      --sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      --radius: 18px;
+      --shadow: 0 1px 2px rgba(28, 27, 34, .04), 0 12px 32px -16px rgba(28, 27, 34, .12);
     }
     * { box-sizing: border-box; }
-    html { background: var(--black); color-scheme: dark; }
+    html { background: var(--bg); color-scheme: light; scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--black);
-      color: var(--paper);
-      font-family: var(--serif);
-      font-optical-sizing: auto;
-      font-variation-settings: "SOFT" 30, "WONK" 0;
-      font-size: 1.125rem;
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--body);
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-    a { color: var(--teal); text-decoration: none; }
-    a:hover { color: var(--purple); text-decoration: underline; text-underline-offset: .18em; }
-    ::selection { background: var(--purple); color: var(--black); }
+    a { color: var(--accent-ink); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: .2em; }
+    ::selection { background: var(--accent-soft); color: var(--ink); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-    /* Masthead */
-    .masthead {
-      padding: clamp(2.5rem, 7vw, 5rem) 1.5rem clamp(1.5rem, 4vw, 3rem);
+    /* Top bar */
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(251, 250, 247, .82);
+      backdrop-filter: saturate(160%) blur(12px);
+      -webkit-backdrop-filter: saturate(160%) blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .inner {
+      max-width: 72rem; margin: 0 auto; padding: .9rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    }
+    .wordmark {
+      font-family: var(--serif); font-size: 1.35rem; font-weight: 500; color: var(--ink);
+      letter-spacing: -.01em; font-variation-settings: "opsz" 24;
+    }
+    .wordmark em { font-style: italic; color: var(--accent); }
+    .wordmark:hover { text-decoration: none; }
+    .nav { margin: 0; padding: 0; list-style: none; display: flex; gap: 1.5rem; font-size: .9rem; font-weight: 500; }
+    .nav a { color: var(--body); }
+    .nav a:hover { color: var(--ink); text-decoration: none; }
+    @media (max-width: 40rem) { .nav { display: none; } }
+
+    /* Hero */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: clamp(4.5rem, 12vw, 8.5rem) 1.5rem clamp(3.5rem, 9vw, 6.5rem);
       text-align: center;
-      border-bottom: 1px solid var(--rule);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
       background:
-        radial-gradient(60% 50% at 30% 0%, rgba(155, 93, 229, .22), transparent 70%),
-        radial-gradient(50% 45% at 75% 10%, rgba(45, 212, 191, .16), transparent 70%),
-        var(--black);
+        radial-gradient(48rem 24rem at 50% -8rem, rgba(63, 79, 217, .10), transparent 70%),
+        radial-gradient(30rem 16rem at 85% 110%, rgba(255, 176, 92, .12), transparent 70%);
     }
-    .logo {
-      margin: 0;
-      font-weight: 700;
-      font-size: clamp(2.75rem, 10vw, 6.5rem);
-      line-height: .95;
-      letter-spacing: -.02em;
-      font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+    .hero > * { position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-block; margin: 0 0 1.5rem; padding: .35rem .85rem;
+      background: var(--accent-soft); color: var(--accent-ink);
+      border-radius: 999px; font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
     }
-    .logo a { text-decoration: none; }
-    .logo .poetry { color: var(--purple); }
-    .logo .united { color: var(--teal); font-style: italic; font-weight: 500; }
-    .est {
-      margin: 1rem 0 0;
-      color: var(--muted);
-      font-size: .8rem;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      font-variation-settings: "opsz" 9;
+    .hero h1 {
+      margin: 0 auto; max-width: 18ch;
+      font-family: var(--serif); font-weight: 400; color: var(--ink);
+      font-size: clamp(2.75rem, 7.5vw, 5.5rem); line-height: 1.02; letter-spacing: -.025em;
+      font-variation-settings: "opsz" 72;
     }
-    .nav {
-      margin: 1.75rem 0 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: .25rem 1.75rem;
-      font-size: .95rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-variation-settings: "opsz" 9;
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero .lede {
+      max-width: 36rem; margin: 1.75rem auto 0;
+      font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.6; color: var(--body);
     }
-    .nav a { color: var(--paper); }
-    .nav a:hover { color: var(--teal); text-decoration: none; }
+    .hero .lede strong { color: var(--ink); font-weight: 600; }
+    .hero .actions { margin-top: 2.25rem; display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
 
-    main { padding: 0 1.5rem 4rem; }
-    section {
-      max-width: var(--measure);
-      margin: 0 auto;
-      padding: clamp(2.5rem, 6vw, 4.5rem) 0;
-      border-bottom: 1px solid var(--rule);
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .8rem 1.35rem; border-radius: 999px;
+      font-size: .95rem; font-weight: 600; line-height: 1;
+      border: 1px solid transparent; transition: background .15s, color .15s, border-color .15s, transform .15s;
     }
-    section:last-of-type { border-bottom: 0; }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+    .btn.primary { background: var(--ink); color: #fff; }
+    .btn.primary:hover { background: #000; }
+    .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn.ghost:hover { border-color: var(--ink); }
+    .btn svg { width: 1em; height: 1em; }
+
+    /* Sections */
+    main { padding: 0 1.5rem 5rem; }
+    main section { max-width: var(--measure); margin: 0 auto; padding: clamp(3.5rem, 8vw, 6rem) 0; }
+    main section + section { border-top: 1px solid var(--line); }
     .kicker {
-      margin: 0 0 1rem;
-      color: var(--teal);
-      font-size: .78rem;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      font-variation-settings: "opsz" 9;
+      margin: 0 0 1rem; color: var(--accent-ink);
+      font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
     }
     h2 {
       margin: 0 0 1.25rem;
-      font-weight: 600;
-      font-size: clamp(1.75rem, 4.5vw, 2.5rem);
-      line-height: 1.15;
-      letter-spacing: -.01em;
-      font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 72;
+      font-family: var(--serif); font-weight: 400; color: var(--ink);
+      font-size: clamp(2rem, 4.5vw, 2.9rem); line-height: 1.1; letter-spacing: -.02em;
+      font-variation-settings: "opsz" 48;
     }
-    h2 em { color: var(--purple); font-style: italic; }
+    h2 em { font-style: italic; color: var(--accent); }
+    p { margin: 0 0 1.15rem; }
+    p:last-child { margin-bottom: 0; }
 
-    .lede {
-      font-size: clamp(1.35rem, 3vw, 1.7rem);
-      line-height: 1.4;
-      font-weight: 300;
-      font-variation-settings: "opsz" 40;
-      margin: 0;
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: clamp(1.5rem, 4vw, 2.5rem);
     }
-    .lede strong { font-weight: 600; color: var(--teal); }
 
     /* Statement */
     .statement blockquote {
-      margin: 1.75rem 0;
-      padding: 0 0 0 1.25rem;
-      border-left: 2px solid var(--purple);
-      color: var(--paper);
-      font-style: italic;
-      font-variation-settings: "opsz" 24, "SOFT" 40;
+      margin: 1.75rem 0; padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 4vw, 2rem);
+      background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0;
+      font-family: var(--serif); font-size: 1.2rem; line-height: 1.55; color: var(--ink);
+      font-variation-settings: "opsz" 18;
     }
-    .statement blockquote cite { display: block; margin-top: .5rem; color: var(--muted); font-style: normal; font-size: .9rem; }
-    .statement .verdict { font-weight: 600; color: var(--teal); }
+    .statement blockquote cite { display: block; margin-top: .85rem; font-family: var(--sans); font-style: normal; font-size: .85rem; color: var(--muted); }
+    .statement .verdict { color: var(--ink); font-weight: 600; }
 
     /* Poem */
-    .poem { margin: 0; }
-    .poem-title { margin: 0 0 .25rem; font-size: 1.6rem; font-weight: 600; font-variation-settings: "opsz" 48; }
-    .poem-by { margin: 0 0 1.75rem; color: var(--muted); font-style: italic; }
-    .poem-by span { color: var(--purple); font-style: normal; }
+    .poem { text-align: center; }
+    .poem-title { margin: 0 0 .35rem; font-family: var(--serif); font-size: 1.9rem; font-weight: 500; color: var(--ink); font-variation-settings: "opsz" 36; }
+    .poem-by { margin: 0 0 2rem; color: var(--muted); font-size: .95rem; }
+    .poem-by span { color: var(--ink); font-weight: 500; }
     .verse {
-      margin: 0;
-      white-space: pre-wrap;
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      line-height: 1.7;
-      font-variation-settings: "opsz" 18, "SOFT" 20;
+      margin: 0; white-space: pre-wrap;
+      font-family: var(--serif); font-size: 1.3rem; line-height: 1.75; color: var(--ink);
+      font-variation-settings: "opsz" 18;
     }
-    .colophon { margin: 1.75rem 0 0; color: var(--muted); font-size: .9rem; }
+    .colophon { margin: 2rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
 
     /* Principles */
-    ol.principles { margin: 0; padding-left: 1.5rem; }
-    ol.principles li { margin: 0 0 .9rem; padding-left: .35rem; }
-    ol.principles li::marker { color: var(--teal); font-weight: 600; }
-
-    .cta {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: .7rem 1.3rem;
-      border: 1px solid var(--purple);
-      border-radius: 999px;
-      color: var(--paper);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-size: .85rem;
-      font-variation-settings: "opsz" 9;
-      transition: background .15s, color .15s, border-color .15s;
+    ol.principles { margin: 1.5rem 0 0; padding: 0; list-style: none; counter-reset: rule; display: grid; gap: .85rem; }
+    ol.principles li {
+      counter-increment: rule; position: relative;
+      padding: 1.1rem 1.25rem 1.1rem 3.6rem;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+      color: var(--ink);
     }
-    .cta:hover { background: var(--purple); color: var(--black); text-decoration: none; border-color: var(--purple); }
-    .cta.teal { border-color: var(--teal); }
-    .cta.teal:hover { background: var(--teal); border-color: var(--teal); }
+    ol.principles li::before {
+      content: counter(rule); position: absolute; left: 1.1rem; top: .95rem;
+      width: 1.75rem; height: 1.75rem; border-radius: 999px;
+      display: grid; place-items: center;
+      background: var(--accent-soft); color: var(--accent-ink);
+      font-family: var(--serif); font-weight: 600; font-size: .95rem;
+    }
+
+    /* Join */
+    .join .card { text-align: center; }
+    .join .card h2 { margin-bottom: .75rem; }
+    .join .card p { max-width: 32rem; margin-left: auto; margin-right: auto; }
+    .join .actions { margin-top: 1.75rem; display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
 
     footer {
-      border-top: 1px solid var(--rule);
-      padding: 2rem 1.5rem 3rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: .85rem;
+      border-top: 1px solid var(--line); padding: 2.5rem 1.5rem 3.5rem;
+      text-align: center; color: var(--muted); font-size: .88rem;
     }
-    footer .mark { color: var(--purple); }
-    footer .mark b { color: var(--teal); font-weight: 500; font-style: italic; }
+    footer .wordmark { font-size: 1.15rem; }
+    footer p { margin: .35rem 0; }
   </style>
 </head>
 <body>
-  <header class="masthead">
-    <h1 class="logo"><a href="/"><span class="poetry">Poetry</span> <span class="united">United</span></a></h1>
-    <p class="est">Begun anew &middot; MMXXVI</p>
-    <ul class="nav">
-      <li><a href="#begin">Begin Again</a></li>
-      <li><a href="#statement">Statement</a></li>
-      <li><a href="#poem">A Poem</a></li>
-      <li><a href="#principles">Principles</a></li>
-      <li><a href="#join">Join</a></li>
-    </ul>
+  <header class="topbar">
+    <div class="inner">
+      <a class="wordmark" href="/">Poetry <em>United</em></a>
+      <ul class="nav">
+        <li><a href="#statement">Statement</a></li>
+        <li><a href="#poem">A Poem</a></li>
+        <li><a href="#principles">Principles</a></li>
+        <li><a href="#join">Join</a></li>
+      </ul>
+    </div>
   </header>
 
-  <main>
-    <section id="begin">
-      <p class="kicker">Why</p>
-      <p class="lede">The Poetry Foundation has failed poetry. In the spirit of <strong>Ezra Pound</strong> and <strong>Harriet Monroe</strong>, it is time to <strong>begin again.</strong></p>
-    </section>
+  <section class="hero" id="begin">
+    <span class="eyebrow">Begun anew &middot; MMXXVI</span>
+    <h1>It is time to <em>begin again.</em></h1>
+    <p class="lede">The Poetry Foundation has failed poetry. In the spirit of <strong>Ezra Pound</strong> and <strong>Harriet Monroe</strong>, we are starting over, with the door open.</p>
+    <div class="actions">
+      <a class="btn primary" href="#statement">Read the statement</a>
+      <a class="btn ghost" href="#join">Send us poems</a>
+    </div>
+  </section>
 
+  <main>
     <section id="statement" class="statement">
       <p class="kicker">Statement</p>
       <h2>We reject the <em>Poetry Foundation.</em></h2>
@@ -219,7 +231,7 @@
 
     <section id="poem">
       <p class="kicker">A Poem</p>
-      <article class="poem">
+      <article class="poem card">
         <h2 class="poem-title">A Pact</h2>
         <p class="poem-by">by <span>Ezra Pound</span></p>
         <pre class="verse">I make a pact with you, Walt Whitman—
@@ -246,17 +258,24 @@ Let there be commerce between us.</pre>
       </ol>
     </section>
 
-    <section id="join">
-      <p class="kicker">Join</p>
-      <h2>Send us <em>poems.</em></h2>
-      <p>Poetry United is being built in the open. The site, the anthology, and the app live in a public repository, and the door is open to poets, readers, and builders alike.</p>
-      <a class="cta" href="https://github.com/quoinlock/poetry-united">Follow the build on GitHub</a>
+    <section id="join" class="join">
+      <div class="card">
+        <p class="kicker">Join</p>
+        <h2>Send us <em>poems.</em></h2>
+        <p>Poetry United is being built in the open. The site, the anthology, and the app live in a public repository, and the door is open to poets, readers, and builders alike.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/quoinlock/poetry-united">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            Follow the build on GitHub
+          </a>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p><span class="mark">Poetry <b>United</b></span> &middot; poetry-united.com</p>
-    <p>Poems reproduced here are in the public domain unless otherwise noted.</p>
+    <p><a class="wordmark" href="/">Poetry <em>United</em></a></p>
+    <p>poetry-united.com &middot; Poems reproduced here are in the public domain unless otherwise noted.</p>
   </footer>
 </body>
 </html>
